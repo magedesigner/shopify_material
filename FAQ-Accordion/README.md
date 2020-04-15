@@ -7,7 +7,7 @@
 
 ## Add jquery library 
 
-- step 4. theme.liquid
+- step 4. theme.liquid add into <head> tag
 
 ```bash
 {{ '//code.jquery.com/jquery-1.11.3.min.js' | script_tag }}
