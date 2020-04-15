@@ -5,9 +5,9 @@
 
 ![](images/create-page.png)
 
-## add jquery library 
+## Add jquery library 
 
-step 4. 
+- step 4. theme.liquid
 
 ```bash
 {{ '//code.jquery.com/jquery-1.11.3.min.js' | script_tag }}
