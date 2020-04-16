@@ -1,0 +1,23 @@
+.logolist
+{	text-align:center;
+}
+.logolist ul li
+{	display: inline-block; padding:10px; text-align: center; vertical-align:middle;
+  	padding:1rem 10px 1rem 10px;
+}
+.logolist h2
+{	display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.logolist ul
+{	display: inline-block; vertical-align: middle;
+} 
+.logolist ul li img
+{   vertical-align: middle;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}

@@ -1,0 +1,119 @@
+<style>
+ .logo-bar-section {
+  max-width: {{ section.settings.logo_width }};
+  display: inline-block;
+ }
+</style>
+
+<section class="Section" id="section-{{ section.id }}" class="brand-logo">
+  <div class="logolist container">
+  <h2>{{ section.settings.title | escape }}</h2>
+  {% if section.blocks.size > 0 %}
+    <ul class="{%- if section.settings.show_slider -%} brand-slider {%- endif -%}">
+      {% for block in section.blocks %}
+        <li class="logo-bar-section" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}">
+          {% endif %}
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | img_url: '150x150', scale: 2 | img_tag: block.settings.image.alt, 'logo-bar__image' }}
+          {% else %}
+            {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Logo list",
+    "class": "index-section",
+    "max_blocks": 10,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Logo list"       
+      },
+	  {
+        "type": "select",
+        "id": "logo_width",
+        "label": "Logo width",
+        "default": "150px",
+        "options": [
+          {
+            "label": "Extra Small",
+            "value": "100px"
+          },
+          {
+            "label": "Small",
+            "value": "125px"
+          },
+          {
+            "label": "Medium",
+            "value": "150px"
+          },
+          {
+            "label": "Large",
+            "value": "175px"
+          },
+          {
+            "label": "Extra Large",              
+            "value": "200px"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_slider",
+        "label": "Show Slider",
+        "default": false
+       }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo list",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
